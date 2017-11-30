@@ -153,7 +153,9 @@ public class PeopleService {
             throw new PeopleApiException("Failed to load People API credential. Credential does not exist for %s", userId);
         }
 
-        return new com.google.api.services.people.v1.PeopleService.Builder(flow.getTransport(), flow.getJsonFactory(), credential).build();
+        return new com.google.api.services.people.v1.PeopleService.Builder(flow.getTransport(), flow.getJsonFactory(), credential)
+            .setApplicationName("Contact Sync")
+            .build();
     }
 
     @SuppressWarnings("unchecked")
