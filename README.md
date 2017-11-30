@@ -22,6 +22,7 @@ out to your teammates from there.
 
 Removing **3wks** from the contact's notes will cause the contact to stop being shared and
 will remove it from the central address book and subsequently from your team's address books.
+It will not be removed from your contacts.
 
 ### Sync Frequency ###
 
