@@ -18,7 +18,7 @@
     </parent>
 
 	<properties>
-        <app.userId>${project.artifactId}-${project.activeProfiles[0].id}</app.userId>
+        <app.id>${project.artifactId}-${project.activeProfiles[0].id}</app.id>
         <app.version>1</app.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -182,7 +182,7 @@
                     <artifactId>maven-scm-plugin</artifactId>
                     <version>1.9.5</version>
                     <configuration>
-                        <tag>${app.userId}-v-${app.version}-${build.time}</tag>
+                        <tag>${app.id}-v-${app.version}-${build.time}</tag>
                     </configuration>
                 </plugin>
             </plugins>
@@ -198,9 +198,31 @@
                 <artifactId>appengine-maven-plugin</artifactId>
                 <version>${cloudsdk.version}</version>
                 <configuration>
-                    <project>${app.userId}</project>
+                    <project>${app.id}</project>
                     <version>${app.version}</version>
                 </configuration>
+            </plugin>
+
+            <!-- Maven's build timezone is always in UTC so that's why we use this. See http://stackoverflow.com/a/35578881/945789 -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.12</version>
+                <executions>
+                    <execution>
+                        <id>timestamp-property</id>
+                        <goals>
+                            <goal>timestamp-property</goal>
+                        </goals>
+                        <phase>initialize</phase>
+                        <configuration>
+                            <name>build.time</name>
+                            <pattern>yyyyMMdd-HHmmss</pattern>
+                            <locale>en_AU</locale>
+                            <timeZone>AET</timeZone>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <!-- This plugin runs the static asset build at the appropriate lifecycle points of the maven build -->
