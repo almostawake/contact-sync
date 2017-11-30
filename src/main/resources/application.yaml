@@ -1,17 +1,18 @@
-security:
-  user:
-    name: admin
-    password: password
+#
+# Common application configuration
+#
+
+host: https://contact-sync-prod.appspot.com
+masterUserId: contact@3wks.com.au
+syncFlag: 3wks
+
+spring:
+  jackson:
+    serialization.WRITE_DATES_AS_TIMESTAMPS: false
 
 logging.level.org.springframework:
   web: INFO
-  security: DEBUG
-
-host: http://localhost:8080
 
 gmail.api.oauth:
   clientId: 914789762810-1j05rbbjnd6tdatt2t3jlmiojnt5pvt2.apps.googleusercontent.com
   clientSecret: 9h2AFEyq971yNGL0CkbScvV8
-
-masterUserId: contact@3wks.com.au
-syncFlag: 3wks
