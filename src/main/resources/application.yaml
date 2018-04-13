@@ -4,7 +4,7 @@
 
 host: https://contact-sync-prod.appspot.com
 masterUserId: contact@3wks.com.au
-syncFlag: 3wks
+syncFlag: 3wksc
 
 spring:
   jackson:
